@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import CreateContent from "./content/CreateContent";
+import "./App.css";
+import ContentTable from "./content/ContentTable.js";
+import CreateLicense from "./license/CreateLicense";
+import ConnectLicenseToContent from "./content/ConnectLicenseToContent";
+import AllLicenses from "./license/AllLicenses";
+import ConnectionModal from "./content/ConnectionModal"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CreateContent />
+      <CreateLicense />
+      <ConnectLicenseToContent />
+      <AllLicenses />
+      <ContentTable/>
+    
     </div>
   );
 }
