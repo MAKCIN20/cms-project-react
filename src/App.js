@@ -4,7 +4,7 @@ import "./navbar/navbar.css"
 import ContentTable from "./content/ContentTable.js";
 import CreateLicense from "./license/CreateLicense";
 import { Route, Routes } from "react-router-dom"
-
+import Home from "./Home";
 import AllLicenses from "./license/AllLicenses";
 
 import NavBar from "./navbar/NavBar";
@@ -18,7 +18,7 @@ function App() {
       
       <div className="container-fluid">
         <Routes>
-          <Route path="/" element={null} />
+          <Route path="/" element={<Home/>} />
           <Route path="/Content" element={<ContentTable />} />
           <Route path="/License" element={<AllLicenses />} />
           <Route path="/CreateContent" element={<CreateContent/>}/>
