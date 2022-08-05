@@ -29,7 +29,7 @@ export default function App() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create Content</Modal.Title>
+          <Modal.Title>Create License</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
