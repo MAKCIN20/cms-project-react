@@ -27,9 +27,9 @@ const LicenseModal = (props) => {
               <tr>
                 <th scope="row">{license.id}</th>
                 <td>{license.name}</td>
-                <td>{license.startTime} </td>
+                <td>{moment(license.statTime).format("DDD MM YYYY")} </td>
 
-                <td>{license.endTime}</td>
+                <td>{moment(license.endTime).format("DD MM YYYY")}</td>
               </tr>
             </tbody>
           </table>

@@ -1,15 +1,18 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 export default function App() {
   const [name, setName] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
 
   const createLicense = (name, startTime, endTime) => {
-    axios.post("http://localhost:8080/licenses", { name, startTime, endTime })
-    .then(window. location. reload(true));
-    
+    axios
+      .post("http://localhost:8080/licenses", { name, startTime, endTime })
+      .then(axios.get("http://localhost:8080/licenses"));
   };
 
   return (
@@ -31,25 +34,15 @@ export default function App() {
             />
           </div>
           <div className="col-md-2">
-            <input
-              type="text"
-              placeholder="Input License Start Time"
-              id="message"
-              name="message"
-              className="form-control"
-              value={startTime}
-              onChange={(writed) => setStartTime(writed.target.value)}
+            <DatePicker
+              selected={startTime}
+              onChange={(date) => setStartTime(date)}
             />
           </div>
           <div className="col-md-2">
-            <input
-              type="text"
-              placeholder="Input License End Time"
-              id="message"
-              name="message"
-              className="form-control"
-              value={endTime}
-              onChange={(writed) => setEndTime(writed.target.value)}
+            <DatePicker
+              selected={endTime}
+              onChange={(date) => setEndTime(date)}
             />
           </div>
         </div>
@@ -60,7 +53,7 @@ export default function App() {
           type="submit"
           className="btn btn-dark"
           onClick={() => {
-            createLicense(name, startTime, endTime);
+            createLicense(name, startTime.getTime(), endTime.getTime());
           }}
         >
           Submit

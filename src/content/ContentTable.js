@@ -55,7 +55,7 @@ function ContentTable() {
     axios
       .delete("http://localhost:8080/contents/" + contentId)
       .then(() => this.setState({ situation: "Delete successful" }))
-      .then(window. location. reload(true));
+      .then(window.location.reload(true));
   };
 
   return (
@@ -80,7 +80,7 @@ function ContentTable() {
       </div>
 
       <div className="container-fluid">
-        <div className="row-md">
+        <div className="row">
           <div className="col-md-12">
             <table className="table table-bordered table-dark">
               <thead>
@@ -104,28 +104,40 @@ function ContentTable() {
                     <td>{content.videoUrl}</td>
                     <td>{content.posterUrl}</td>
                     <td>
-                      <Button
-                        variant="danger"
-                        className="openModalBtn"
-                        onClick={() => {
-                          handleShowDelete();
-                          setContentId(content.id);
-                        }}
+                      <div
+                        class="btn-toolbar mb-3"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups"
                       >
-                        Delete Content
-                      </Button>
+                        <div
+                          class="btn-group mr-3"
+                          role="group"
+                          aria-label="First group"
+                        >
+                          <Button
+                            variant="danger"
+                            className="openModalBtn"
+                            onClick={() => {
+                              handleShowDelete();
+                              setContentId(content.id);
+                            }}
+                          >
+                            Delete Content
+                          </Button>
+                        </div>
 
-                      <Button
-                        variant="btn btn-outline-info"
-                        className="openModalBtn"
-                        onClick={() => {
-                          handleShowLicense();
-                          setSelectedContent(content);
-                        }}
-                      >
-                        Show License
-                      </Button>
-                      <ConnectionModal contentId={content.id}/>
+                        <Button
+                          variant="btn btn-outline-info"
+                          className="openModalBtn"
+                          onClick={() => {
+                            handleShowLicense();
+                            setSelectedContent(content);
+                          }}
+                        >
+                          Show License
+                        </Button>
+                      </div>
+                      <ConnectionModal contentId={content.id} />
                     </td>
                   </tr>
                 ))}
@@ -148,8 +160,6 @@ function ContentTable() {
                 ) : (
                   ""
                 )}
-
-            
               </tbody>
             </table>
           </div>

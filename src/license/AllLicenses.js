@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
 function AllLicenses() {
+  useEffect(() => {
+    getLicenses();
+  }, []);
   const [licenses, setLicenses] = useState([]);
   const [licenseName, setLicenseName] = useState("");
 
@@ -14,7 +17,7 @@ function AllLicenses() {
       })
       .then((response) => {
         setLicenses(response.data);
-      })
+      });
   };
 
   return (
@@ -42,6 +45,7 @@ function AllLicenses() {
           >
             Search License
           </Button>
+          </div>
           {licenses.map((license) => (
             <table class="table table-striped table-dark">
               <thead>
@@ -56,14 +60,14 @@ function AllLicenses() {
                 <tr>
                   <th scope="row">{license.id}</th>
                   <td>{license.name}</td>
-                  <td>{moment(license.startTime).format("DD.MM.YYYY")}</td>
+                  <td>{moment(license.statTime).format("DD MM YYYY")}</td>
 
-                  <td>{moment(license.endTime).format("DD.MM.YYYY")}</td>
+                  <td>{moment(license.endTime).format("DD MM YYYY")}</td>
                 </tr>
               </tbody>
             </table>
           ))}
-        </div>
+       
       </div>
     </div>
   );

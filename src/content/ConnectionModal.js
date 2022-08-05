@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import ConnectLicenseToContent from "./ConnectLicenseToContent";
 
 function ConnectionModal(props) {
   const [show, setShow] = useState(false);
@@ -23,19 +22,21 @@ function ConnectionModal(props) {
   };
 
   const connectLicense = (contentId, licenseId) => {
-    axios.post(
-      "http://localhost:8080/contents/" +
-        contentId +
-        "/licenses/" +
-        licenseId +
-        "/add"
-    );
+    axios
+      .post(
+        "http://localhost:8080/contents/" +
+          contentId +
+          "/licenses/" +
+          licenseId +
+          "/add"
+      )
+      .then(window.location.reload(true));
   };
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      <Button variant="btn btn-outline-secondary" onClick={handleShow}>
+        Connect License and Content
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -57,20 +58,20 @@ function ConnectionModal(props) {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Select 
-              value={licenseId} aria-label="Default select example">
-                {licenses.map((license, index) => {
-                  return (
-                    <option key={index} value={license.id}  onChange={(selected) => setLicenseId(selected.target.value)}>
-                      {license.name}
-                    </option>
-                  );
+              <Form.Select
+                onChange={(selected) => setLicenseId(selected.target.value)}
+                value={licenseId}
+                aria-label="Default select example"
+              >
+                {licenses.map((license) => {
+                  return <option value={license.id}>{license.name}</option>;
                 })}
               </Form.Select>
               <Form.Label>License Id</Form.Label>
               <Form.Control
                 type="licenseId"
-                placeholder="Enter License Id"
+                readOnly={true}
+                placeholder={licenseId}
                 autoFocus
                 value={licenseId}
               />
@@ -85,6 +86,7 @@ function ConnectionModal(props) {
             variant="primary"
             onClick={() => {
               connectLicense(props.contentId, licenseId);
+              handleClose();
             }}
           >
             Save Changes

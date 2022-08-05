@@ -1,0 +1,8 @@
+.CreateLicense{
+    font-family: verdana;
+    text-align: center;
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container{
+    width: 100%;
+}
