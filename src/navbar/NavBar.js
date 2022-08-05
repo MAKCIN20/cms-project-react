@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function NavBar() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navbar navbar-dark bg-dark" bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">CMS</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

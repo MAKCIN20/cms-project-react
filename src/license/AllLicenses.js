@@ -48,8 +48,8 @@ function AllLicenses() {
           </Button>
           <CreateLicense/>
           </div>
-          {licenses.map((license) => (
-            <table class="table table-striped table-dark">
+          
+            <table class="table table-striped table-bordered table-dark">
               <thead>
                 <tr>
                   <th scope="col">id</th>
@@ -59,16 +59,17 @@ function AllLicenses() {
                 </tr>
               </thead>
               <tbody>
+              {licenses.map((license) => (
                 <tr>
                   <th scope="row">{license.id}</th>
                   <td>{license.name}</td>
                   <td>{moment(license.statTime).format("DD MM YYYY")}</td>
-
                   <td>{moment(license.endTime).format("DD MM YYYY")}</td>
                 </tr>
+                ))}
               </tbody>
-            </table>
-          ))}
+              </table>
+          
        
       </div>
     </div>
