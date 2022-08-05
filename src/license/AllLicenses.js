@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import CreateLicense from "./CreateLicense"
 import { Button } from "react-bootstrap";
 
 function AllLicenses() {
@@ -45,6 +46,7 @@ function AllLicenses() {
           >
             Search License
           </Button>
+          <CreateLicense/>
           </div>
           {licenses.map((license) => (
             <table class="table table-striped table-dark">

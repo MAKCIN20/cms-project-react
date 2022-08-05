@@ -6,6 +6,7 @@ import LicenseModal from "./LicenseModal";
 import DeleteModal from "./DeleteModal";
 import Button from "react-bootstrap/esm/Button";
 import ConnectionModal from "./ConnectionModal";
+import CreateContent from "./CreateContent"
 
 function ContentTable() {
   const [contents, setContents] = useState([]);
@@ -20,9 +21,6 @@ function ContentTable() {
   const [showLicense, setShowLicense] = useState(false);
   const handleCloseLicense = () => setShowLicense(false);
   const handleShowLicense = () => setShowLicense(true);
-  const [showConnect, setShowConnect] = useState(false);
-  const handleCloseConnect = () => setShowConnect(false);
-  const handleShowConnect = () => setShowConnect(true);
 
   useEffect(() => {
     getAll();
@@ -78,6 +76,7 @@ function ContentTable() {
           </Button>
         </div>
       </div>
+      <CreateContent/>
 
       <div className="container-fluid">
         <div className="row">
