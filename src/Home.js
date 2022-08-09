@@ -1,7 +1,7 @@
 function Home(){
     return(
         <div>
-    <h1> HOŞGELDİNİZ FATİH BEY </h1>
+    <h1> HOŞGELDİNİZ </h1>
     İYİ ÇALIŞMALAR</div>
     );
 }
